@@ -1,4 +1,4 @@
 <?php
 return [
-	'DEV' => env('UOM_PKG', false),
+	'DEV' => env('UOM_PKG_DEV', false),
 ];
