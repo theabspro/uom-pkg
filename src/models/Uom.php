@@ -65,9 +65,9 @@ class Uom extends Model {
 	public static function getList($params = [], $add_default = true, $default_text = 'Select Uom') {
 		$list = Collect(Self::select([
 			'id',
-			'name',
+			'code as name',
 		])
-				->orderBy('name')
+				->orderBy('code')
 				->get());
 		if ($add_default) {
 			$list->prepend(['id' => '', 'name' => $default_text]);
