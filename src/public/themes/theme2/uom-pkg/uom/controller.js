@@ -189,7 +189,7 @@ app.component('uomForm', {
             rules: {
                 'short_name': {
                     required: true,
-                    minlength: 3,
+                    minlength: 2,
                     maxlength: 32,
                 },
                 'name': {

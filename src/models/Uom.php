@@ -17,6 +17,8 @@ class Uom extends Model {
 		'company_id',
 		'code',
 		'name',
+		'short_name',
+		'description',
 	];
 
 	public function getDateOfJoinAttribute($value) {

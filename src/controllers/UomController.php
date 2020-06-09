@@ -24,7 +24,7 @@ class UomController extends Controller {
 				'uoms.id',
 				'uoms.name',
 				'uoms.short_name',
-
+				'uoms.description',
 				DB::raw('IF(uoms.deleted_at IS NULL, "Active","Inactive") as status'),
 			])
 			->where('uoms.company_id', Auth::user()->company_id)
@@ -97,7 +97,7 @@ class UomController extends Controller {
 			$validator = Validator::make($request->all(), [
 				'short_name' => [
 					'required:true',
-					'min:3',
+					'min:2',
 					'max:32',
 					'unique:uoms,short_name,' . $request->id . ',id,company_id,' . Auth::user()->company_id,
 				],
@@ -119,6 +119,7 @@ class UomController extends Controller {
 			} else {
 				$uom = Uom::withTrashed()->find($request->id);
 			}
+			$uom->code = $request->short_name;
 			$uom->fill($request->all());
 			if ($request->status == 'Inactive') {
 				$uom->deleted_at = Carbon::now();
