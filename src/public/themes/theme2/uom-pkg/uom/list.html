@@ -3,7 +3,14 @@
         <div class="page-header-inner">
             <div class="page-header-content-left">
                 <div class="page-header-content title-block">
-                    <h1 class="title type-2">Uoms(<span id="table_infos"></span>)</h1>
+                    <h1 class="title type-2">UOMs<span id="table_infos" class="badge badge-secondary"></span></h1>
+                </div><!-- Page Header Content -->
+                <div class="page-header-content reset-block">
+                    <div class="reset-wrap">
+                        <button class="btn-reset reset-tooltip refresh_table my-tooltip" ng-shortcut="'meta+shift+r'" ng-shortcut-click data-title="ctrl+shift+r">
+                            <img class="img-responsive" src="./public/theme/img/content/reset.svg" alt="Reset" />
+                        </button>
+                    </div>
                 </div><!-- Page Header Content -->
                 <div class="page-header-content search-block">
                     <div class="search_filter">
@@ -18,13 +25,6 @@
                 </div><!-- Page Header Content -->
             </div><!-- Page Header Content Left -->
             <div class="page-header-content-right">
-                <div class="page-header-content reset-block">
-                    <div class="reset-wrap">
-                        <button class="btn-reset reset-tooltip refresh_table my-tooltip" ng-shortcut="'meta+shift+r'" ng-shortcut-click data-title="ctrl+shift+r">
-                            <img class="img-responsive" src="./public/theme/img/content/reset.svg" alt="Reset" />
-                        </button>
-                    </div>
-                </div><!-- Page Header Content -->
                 <!-- Page Header Content -->
                 <div class="page-header-content button-block" ng-show="$ctrl.add_permission">
                     <a href="#!/uom-pkg/uom/add" class="btn btn-primary my-tooltip" ng-shortcut="'meta+shift+n'" ng-shortcut-click data-title="ctrl+shift+n">Add New</a>
