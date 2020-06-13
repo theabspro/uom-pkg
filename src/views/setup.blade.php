@@ -11,19 +11,19 @@
 	    //Uom
 	    when('/uom-pkg/uom/list', {
 	        template: '<uom-list></uom-list>',
-	        title: 'Uoms',
+	        title: 'UOMs',
 	    }).
 	    when('/uom-pkg/uom/add', {
 	        template: '<uom-form></uom-form>',
-	        title: 'Add Uom',
+	        title: 'Add UOM',
 	    }).
 	    when('/uom-pkg/uom/edit/:id', {
 	        template: '<uom-form></uom-form>',
-	        title: 'Edit Uom',
+	        title: 'Edit UOM',
 	    }).
 	    when('/uom-pkg/uom/card-list', {
 	        template: '<uom-card-list></uom-card-list>',
-	        title: 'Uom Card List',
+	        title: 'UOM Card List',
 	    });
 	}]);
 

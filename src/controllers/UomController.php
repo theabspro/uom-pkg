@@ -44,10 +44,14 @@ class UomController extends Controller {
 		;
 
 		return Datatables::of($uoms)
-			->rawColumns(['name', 'action'])
+			->rawColumns(['name', 'action', 'status'])
 			->addColumn('name', function ($uom) {
 				$status = $uom->status == 'Active' ? 'green' : 'red';
 				return '<span class="status-indicator ' . $status . '"></span>' . $uom->name;
+			})
+			->addColumn('status', function ($uom) {
+				$status = $uom->status == 'Active' ? 'green' : 'red';
+				return '<span class="status-indigator ' . $status . '"></span>' . $uom->status;
 			})
 			->addColumn('action', function ($uom) {
 				$img1 = asset('public/themes/' . $this->data['theme'] . '/img/content/table/edit-yellow.svg');
@@ -87,7 +91,7 @@ class UomController extends Controller {
 			$error_messages = [
 				'short_name.required' => 'Short Name is Required',
 				'short_name.unique' => 'Short Name is already taken',
-				'short_name.min' => 'Short Name is Minimum 3 Charachers',
+				'short_name.min' => 'Short Name is Minimum 2 Charachers',
 				'short_name.max' => 'Short Name is Maximum 32 Charachers',
 				'name.required' => 'Name is Required',
 				'name.unique' => 'Name is already taken',
@@ -108,11 +112,13 @@ class UomController extends Controller {
 					'unique:uoms,name,' . $request->id . ',id,company_id,' . Auth::user()->company_id,
 				],
 			], $error_messages);
+
 			if ($validator->fails()) {
 				return response()->json(['success' => false, 'errors' => $validator->errors()->all()]);
 			}
 
 			DB::beginTransaction();
+
 			if (!$request->id) {
 				$uom = new Uom;
 				$uom->company_id = Auth::user()->company_id;
