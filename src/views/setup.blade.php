@@ -33,4 +33,4 @@
     var uom_card_list_template_url = "{{asset($uom_pkg_prefix.'/public/themes/'.$theme.'/uom-pkg/uom/card-list.html')}}";
     var uom_modal_form_template_url = "{{asset($uom_pkg_prefix.'/public/themes/'.$theme.'/uom-pkg/partials/uom-modal-form.html')}}";
 </script>
-<script type="text/javascript" src="{{asset($uom_pkg_prefix.'/public/themes/'.$theme.'/uom-pkg/uom/controller.js')}}"></script>
+<!-- <script type="text/javascript" src="{{asset($uom_pkg_prefix.'/public/themes/'.$theme.'/uom-pkg/uom/controller.js')}}"></script> -->
