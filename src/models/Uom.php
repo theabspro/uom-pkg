@@ -7,8 +7,9 @@ use App\Company;
 use App\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\BaseModel;
 
-class Uom extends Model {
+class Uom extends BaseModel {
 	use SeederTrait;
 	use SoftDeletes;
 	protected $table = 'uoms';
@@ -16,18 +17,45 @@ class Uom extends Model {
 	protected $fillable = [
 		'company_id',
 		'code',
-		'name',
 		'short_name',
+		'name',
 		'description',
 	];
 
-	public function getDateOfJoinAttribute($value) {
-		return empty($value) ? '' : date('d-m-Y', strtotime($value));
-	}
+	protected static $excelColumnRules = [
+		'Code' => [
+			'table_column_name' => 'code',
+			'rules' => [
+				'required' => [
+				],
+			],
+		],
+		'Short Name' => [
+			'table_column_name' => 'short_name',
+			'rules' => [
+				'nullable' => [
+				],
+			],
+		],
+		'Name' => [
+			'table_column_name' => 'name',
+			'rules' => [
+				'nullable' => [
+				],
+			],
+		],
+		'Description' => [
+			'table_column_name' => 'description',
+			'rules' => [
+				'nullable' => [
+				],
+			],
+		],
+	];
 
-	public function setDateOfJoinAttribute($date) {
-		return $this->attributes['date_of_join'] = empty($date) ? NULL : date('Y-m-d', strtotime($date));
-	}
+	// Getter & Setters --------------------------------------------------------------
+
+	// Getter & Setters --------------------------------------------------------------
 
 	public static function createFromObject($record_data) {
 
